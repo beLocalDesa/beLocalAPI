@@ -26,32 +26,32 @@ public class CityController {
 	@Qualifier("cityService")
 	CityService service;
 	@PutMapping("/city")
-	public boolean agregar(@RequestBody @Valid City city)
+	public boolean insert(@RequestBody @Valid City city)
 	{
-		return service.insertar(city);
+		return service.insert(city);
 	}
 	
 	@PostMapping("/city")
-	public boolean actualizar(@RequestBody @Valid City category)
+	public boolean update(@RequestBody @Valid City category)
 	{
-		return service.actualizar(category);
+		return service.update(category);
 	}
 	
 	@DeleteMapping("/city/{id}")
-	public boolean borrar(long id) 
+	public boolean deletebyId(long id) 
 	{
-		return service.borrar(id);
+		return service.deletebyId(id);
 	}
 	
 	@GetMapping("/city/{id}")
-	public MCity traerPorID(long id)
+	public MCity getbyId(long id)
 	{
-		return service.traerPorID(id);
+		return service.getbyId(id);
 	}
 	
 	@GetMapping("/cities")
-	public List<MCity> traerTodos()
+	public List<MCity> getAll()
 	{
-		return service.traerTodos();
+		return service.getAll();
 	}
 }

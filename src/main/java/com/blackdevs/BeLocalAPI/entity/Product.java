@@ -21,10 +21,17 @@ public class Product implements Serializable {
 	public Product() {
 	}
 	
-	public Product(long _id, String _name, long _shop) {
+	public Product(long _id, String _name, long _shop, String _URL, long _idcategory, long _idsubcategory, String _description, int _price, int _stock) {
 		this.id = _id;
 		this.name = _name;
 		this.shop = _shop;
+		this.URL = _URL;
+		this.id_category = _idcategory ; 
+		this.id_subcategory = _idsubcategory;
+		this.description = _description;
+		this.price = _price;
+		this.stock = _stock;
+		
 	}
 	@GeneratedValue
 	@Id
@@ -37,6 +44,27 @@ public class Product implements Serializable {
 	@Column(name="shop")
 	private long shop;
 
+	@Column(name="URL")
+	private String URL;
+
+	@Column(name="id_category")
+	private long id_category;
+	
+	@Column(name="id_subcategory")
+	private long id_subcategory;
+	
+	@Column(name="description")
+	private String description;
+	
+	@Column(name="price")
+	private int price;
+	
+	@Column(name="stock")
+	private int stock;
+	
+	
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -60,5 +88,52 @@ public class Product implements Serializable {
 	public void setShop(long shop) {
 		this.shop = shop;
 	}
+
+	public String getURL() {
+		return URL;
+	}
 	
+	public long getIdcategory() {
+		return id_category;
+	}
+	
+	public long getIdsubcategory() {
+		return id_subcategory;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setURL(String URL) {
+		this.URL = URL;
+	}
+
+	public void setIdcategory(long id_category) {
+		this.id_category = id_category;
+	}
+	
+	public void setIdsubcategory(long id_subcategory) {
+		this.id_subcategory = id_subcategory;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
 }

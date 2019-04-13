@@ -24,26 +24,26 @@ public class UrlfriendlyController {
 	@Qualifier("urlfriendlyService")
 	UrlfriendlyService service;
 	@PutMapping("/urlfriendly")
-	public boolean agregar(@RequestBody @Valid Urlfriendly urlfriendly)
+	public boolean insert(@RequestBody @Valid Urlfriendly urlfriendly)
 	{
-		return service.insertar(urlfriendly);
+		return service.insert(urlfriendly);
 	}
 	
 	@PostMapping("/urlfriendly")
-	public boolean actualizar(@RequestBody @Valid Urlfriendly urlfriendly)
+	public boolean update(@RequestBody @Valid Urlfriendly urlfriendly)
 	{
-		return service.actualizar(urlfriendly);
+		return service.update(urlfriendly);
 	}
 	
 	@DeleteMapping("/urlfriendly/{id}")
-	public boolean borrar(long id) 
+	public boolean deletebyId(long id) 
 	{
-		return service.borrar(id);
+		return service.deletebyId(id);
 	}
 	
 	@GetMapping("/urlfriendly/{id}")
-	public MUrlfriendly traerPorID(long id)
+	public MUrlfriendly getbyId(long id)
 	{
-		return service.traerPorID(id);
+		return service.getbyId(id);
 	}
 }

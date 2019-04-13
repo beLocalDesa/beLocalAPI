@@ -26,32 +26,32 @@ public class SubcategoryController {
 	@Qualifier("subcategoryService")
 	SubcategoryService service;
 	@PutMapping("/subcategory")
-	public boolean agregar(@RequestBody @Valid Subcategory subcategory)
+	public boolean insert(@RequestBody @Valid Subcategory subcategory)
 	{
-		return service.insertar(subcategory);
+		return service.insert(subcategory);
 	}
 	
 	@PostMapping("/subcategory")
-	public boolean actualizar(@RequestBody @Valid Subcategory subcategory)
+	public boolean update(@RequestBody @Valid Subcategory subcategory)
 	{
-		return service.actualizar(subcategory);
+		return service.update(subcategory);
 	}
 	
 	@DeleteMapping("/subcategory/{id}")
-	public boolean borrar(long id) 
+	public boolean deletebyId(long id) 
 	{
-		return service.borrar(id);
+		return service.deletebyId(id);
 	}
 	
 	@GetMapping("/subcategory/{id}")
-	public MSubcategory traerPorID(long id)
+	public MSubcategory getbyId(long id)
 	{
-		return service.traerPorID(id);
+		return service.getbyId(id);
 	}
 	
 	@GetMapping("/subcategories")
-	public List<MSubcategory> traerTodos()
+	public List<MSubcategory> getAll()
 	{
-		return service.traerTodos();
+		return service.getAll();
 	}
 }

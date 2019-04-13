@@ -15,16 +15,15 @@ import com.blackdevs.BeLocalAPI.repository.ProductRepository;
 public class ProductService {
 	@Autowired
 	@Qualifier("productRepository")
-	private ProductRepository repositorio;
+	private ProductRepository repoProd;
 
 	@Autowired
 	@Qualifier("productConverter")
 	private ProductConverter converter;
 	
-	public boolean insertar(Product product) {
+	public boolean insert(Product product) {
 		try {
-			repositorio.save(product);
-			
+			repoProd.save(product);			
 			return true;
 		} catch(Exception e) {
 			// va logger de error
@@ -32,9 +31,9 @@ public class ProductService {
 		}
 	}
 	
-	public boolean actualizar(Product product) {
+	public boolean update(Product product) {
 		try {
-			repositorio.save(product);
+			repoProd.save(product);
 			return true;
 		} catch(Exception e) {
 			// va logger de error
@@ -42,12 +41,10 @@ public class ProductService {
 		}
 	}
 	
-	public boolean borrar(long id) {
+	public boolean deletebyId(long id) {
 		try {
-			Product product= repositorio.findById(id);
-			
-			repositorio.delete(product);
-			
+			Product product= repoProd.findById(id);			
+			repoProd.delete(product);			
 			return true;			
 		} catch(Exception e) {
 			// va logger de error
@@ -55,9 +52,9 @@ public class ProductService {
 		}
 	}
 	
-	public MProduct traerPorID(long id) {
+	public MProduct getbyId(long id) {
 		try {
-			Product product = repositorio.findById(id);
+			Product product = repoProd.findById(id);
 			
 			return new MProduct(product);			
 		} catch(Exception e) {
@@ -66,15 +63,15 @@ public class ProductService {
 		}
 	}
 	
-	public List<MProduct> traerTodos() {
-		return converter.Lista(repositorio.findAll());
+	public List<MProduct> getAll() {
+		return converter.ListProd(repoProd.findAll());
 	}
 	
-	public List<MProduct> traerPorNombre(String name) {
-		return converter.Lista(repositorio.findByName(name));
+	public List<MProduct> getbyName(String name) {
+		return converter.ListProd(repoProd.findByName(name));
 	}
 	
-	public List<MProduct> traerPorStore(long store) {
-		return converter.Lista(repositorio.findByShop(store));
+	public List<MProduct> getbyStore(long store) {
+		return converter.ListProd(repoProd.findByShop(store));
 	}
 }

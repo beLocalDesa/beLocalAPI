@@ -27,32 +27,32 @@ public class CategoryController {
 	CategoryService service;
 
 	@PutMapping("/category")
-	public boolean agregar(@RequestBody @Valid Category category)
+	public boolean insert(@RequestBody @Valid Category category)
 	{
-		return service.insertar(category);
+		return service.insert(category);
 	}
 	
 	@PostMapping("/category")
-	public boolean actualizar(@RequestBody @Valid Category category)
+	public boolean update(@RequestBody @Valid Category category)
 	{
-		return service.actualizar(category);
+		return service.update(category);
 	}
 	
 	@DeleteMapping("/category/{id}")
-	public boolean borrar(long id) 
+	public boolean deletebyId(long id)
 	{
-		return service.borrar(id);
+		return service.deletebyId(id);
 	}
 	
 	@GetMapping("/category/{id}")
-	public MCategory traerPorID(long id)
+	public MCategory getbyId(long id)
 	{
-		return service.traerPorID(id);
+		return service.getbyId(id);
 	}
 	
 	@GetMapping("/categories")
-	public List<MCategory> traerTodos()
+	public List<MCategory> getAll()
 	{
-		return service.traerTodos();
+		return service.getAll();
 	}
 }

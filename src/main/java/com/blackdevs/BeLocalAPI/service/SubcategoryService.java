@@ -15,16 +15,15 @@ import com.blackdevs.BeLocalAPI.repository.SubcategoryRepository;
 public class SubcategoryService {
 	@Autowired
 	@Qualifier("subcategoryRepository")
-	private SubcategoryRepository repositorio;
+	private SubcategoryRepository repoSubc;
 
 	@Autowired
 	@Qualifier("subcategoryConverter")
 	private SubcategoryConverter converter;
 	
-	public boolean insertar(Subcategory subcategory) {
+	public boolean insert(Subcategory subcategory) {
 		try {
-			repositorio.save(subcategory);
-			
+			repoSubc.save(subcategory);			
 			return true;
 		} catch(Exception e) {
 			// va logger de error
@@ -32,9 +31,9 @@ public class SubcategoryService {
 		}
 	}
 	
-	public boolean actualizar(Subcategory subcategory) {
+	public boolean update(Subcategory subcategory) {
 		try {
-			repositorio.save(subcategory);
+			repoSubc.save(subcategory);
 			return true;
 		} catch(Exception e) {
 			// va logger de error
@@ -42,12 +41,10 @@ public class SubcategoryService {
 		}
 	}
 	
-	public boolean borrar(long id) {
+	public boolean deletebyId(long id) {
 		try {
-			Subcategory subcategory = repositorio.findById(id);
-			
-			repositorio.delete(subcategory);
-			
+			Subcategory subcategory = repoSubc.findById(id);			
+			repoSubc.delete(subcategory);			
 			return true;			
 		} catch(Exception e) {
 			// va logger de error
@@ -55,10 +52,9 @@ public class SubcategoryService {
 		}
 	}
 	
-	public MSubcategory traerPorID(long id) {
+	public MSubcategory getbyId(long id) {
 		try {
-			Subcategory subcategory = repositorio.findById(id);
-			
+			Subcategory subcategory = repoSubc.findById(id);			
 			return new MSubcategory(subcategory);			
 		} catch(Exception e) {
 			// va logger de error
@@ -66,15 +62,15 @@ public class SubcategoryService {
 		}
 	}
 	
-	public List<MSubcategory> traerTodos() {
-		return converter.Lista(repositorio.findAll());
+	public List<MSubcategory> getAll() {
+		return converter.ListSc(repoSubc.findAll());
 	}
 
-	public List<MSubcategory> traerPorNombre(String name) {
-		return converter.Lista(repositorio.findByName(name));
+	public List<MSubcategory> getbyName(String name) {
+		return converter.ListSc(repoSubc.findByName(name));
 	}
 
-	public List<MSubcategory> traerPorCategory(long category) {
-		return converter.Lista(repositorio.findByCategory(category));
+	public List<MSubcategory> getbyCategory(long category) {
+		return converter.ListSc(repoSubc.findByCategory(category));
 	}
 }

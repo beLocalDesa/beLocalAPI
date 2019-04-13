@@ -15,16 +15,15 @@ import com.blackdevs.BeLocalAPI.repository.CityRepository;
 public class CityService {
 	@Autowired
 	@Qualifier("cityRepository")
-	private CityRepository repositorio;
+	private CityRepository repoCity;
 
 	@Autowired
 	@Qualifier("cityConverter")
 	private CityConverter converter;
 	
-	public boolean insertar(City city) {
+	public boolean insert(City city) {
 		try {
-			repositorio.save(city);
-			
+			repoCity.save(city);			
 			return true;
 		} catch(Exception e) {
 			// va logger de error
@@ -32,9 +31,9 @@ public class CityService {
 		}
 	}
 	
-	public boolean actualizar(City city) {
+	public boolean update(City city) {
 		try {
-			repositorio.save(city);
+			repoCity.save(city);
 			return true;
 		} catch(Exception e) {
 			// va logger de error
@@ -42,12 +41,10 @@ public class CityService {
 		}
 	}
 	
-	public boolean borrar(long id) {
+	public boolean deletebyId(long id) {
 		try {
-			City city= repositorio.findById(id);
-			
-			repositorio.delete(city);
-			
+			City city= repoCity.findById(id);
+			repoCity.delete(city);			
 			return true;			
 		} catch(Exception e) {
 			// va logger de error
@@ -55,10 +52,9 @@ public class CityService {
 		}
 	}
 	
-	public MCity traerPorID(long id) {
+	public MCity getbyId(long id) {
 		try {
-			City city = repositorio.findById(id);
-			
+			City city = repoCity.findById(id);			
 			return new MCity(city);			
 		} catch(Exception e) {
 			// va logger de error
@@ -66,7 +62,7 @@ public class CityService {
 		}
 	}
 	
-	public List<MCity> traerTodos() {
-		return converter.Lista(repositorio.findAll());
+	public List<MCity> getAll() {
+		return converter.ListCity(repoCity.findAll());
 	}
 }

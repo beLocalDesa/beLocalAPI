@@ -10,7 +10,7 @@ import com.blackdevs.BeLocalAPI.model.MDistrict;
 
 @Component("districtConverter")
 public class DistrictConverter {
-	public List<MDistrict> Lista(List<District> districts) {
+	public List<MDistrict> ListDist(List<District> districts) {
 		List<MDistrict> mdistricts = new ArrayList<>();
 		
 		for(District district : districts) {

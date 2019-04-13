@@ -15,16 +15,15 @@ import com.blackdevs.BeLocalAPI.repository.StoreRepository;
 public class StoreService {
 	@Autowired
 	@Qualifier("storeRepository")
-	private StoreRepository repositorio;
+	private StoreRepository repoStore;
 
 	@Autowired
 	@Qualifier("storeConverter")
 	private StoreConverter converter;
 	
-	public boolean insertar(Store store) {
+	public boolean insert(Store store) {
 		try {
-			repositorio.save(store);
-			
+			repoStore.save(store);		
 			return true;
 		} catch(Exception e) {
 			// va logger de error
@@ -32,9 +31,9 @@ public class StoreService {
 		}
 	}
 	
-	public boolean actualizar(Store store) {
+	public boolean update(Store store) {
 		try {
-			repositorio.save(store);
+			repoStore.save(store);
 			return true;
 		} catch(Exception e) {
 			// va logger de error
@@ -42,12 +41,10 @@ public class StoreService {
 		}
 	}
 	
-	public boolean borrar(long id) {
+	public boolean deletebyId(long id) {
 		try {
-			Store store = repositorio.findById(id);
-			
-			repositorio.delete(store);
-			
+			Store store = repoStore.findById(id);		
+			repoStore.delete(store);			
 			return true;			
 		} catch(Exception e) {
 			// va logger de error
@@ -55,10 +52,9 @@ public class StoreService {
 		}
 	}
 	
-	public MStore traerPorID(long id) {
+	public MStore getbyId(long id) {
 		try {
-			Store store = repositorio.findById(id);
-			
+			Store store = repoStore.findById(id);			
 			return new MStore(store);			
 		} catch(Exception e) {
 			// va logger de error
@@ -66,19 +62,19 @@ public class StoreService {
 		}
 	}
 	
-	public List<MStore> traerTodos() {
-		return converter.Lista(repositorio.findAll());
+	public List<MStore> getAll() {
+		return converter.ListStore(repoStore.findAll());
 	}
 
-	public List<MStore> traerPorNombre(String name) {
-		return converter.Lista(repositorio.findByName(name));
+	public List<MStore> getbyName(String name) {
+		return converter.ListStore(repoStore.findByName(name));
 	}
 	
-	public List<MStore> traerPorCategory(long category) {
-		return converter.Lista(repositorio.findByCategory(category));
+	public List<MStore> getbyCategory(long category) {
+		return converter.ListStore(repoStore.findByCategory(category));
 	}
 	
-	public List<MStore> traerPorDistrict(long district) {
-		return converter.Lista(repositorio.findByDistrict(district));
+	public List<MStore> getbyDistrict(long district) {
+		return converter.ListStore(repoStore.findByDistrict(district));
 	}
 }

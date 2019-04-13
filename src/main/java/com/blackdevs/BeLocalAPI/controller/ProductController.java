@@ -26,32 +26,33 @@ public class ProductController {
 	@Qualifier("productService")
 	ProductService service;
 	@PutMapping("/product")
-	public boolean agregar(@RequestBody @Valid Product product)
+	public boolean insert(@RequestBody @Valid Product product)
 	{
-		return service.insertar(product);
+		return service.insert(product);
 	}
 	
 	@PostMapping("/product")
-	public boolean actualizar(@RequestBody @Valid Product product)
+	public boolean update(@RequestBody @Valid Product product)
 	{
-		return service.actualizar(product);
+		return service.update(product);
 	}
 	
 	@DeleteMapping("/product/{id}")
-	public boolean borrar(long id) 
+	public boolean deletebyId(long id) 
 	{
-		return service.borrar(id);
+		return service.deletebyId(id);
 	}
 	
 	@GetMapping("/product/{id}")
-	public MProduct traerPorID(long id)
+	public MProduct getbyId(long id)
 	{
-		return service.traerPorID(id);
+		return service.getbyId(id);
 	}
 	
 	@GetMapping("/products")
-	public List<MProduct> traerTodos()
+	public List<MProduct> getAll()
 	{
-		return service.traerTodos();
+		return service.getAll();
 	}
+	
 }

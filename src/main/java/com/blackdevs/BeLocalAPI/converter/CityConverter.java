@@ -10,7 +10,7 @@ import com.blackdevs.BeLocalAPI.model.MCity;
 
 @Component("cityConverter")
 public class CityConverter {
-	public List<MCity> Lista(List<City> categories) {
+	public List<MCity> ListCity(List<City> categories) {
 		List<MCity> mcities = new ArrayList<>();
 		
 		for(City city : categories) {

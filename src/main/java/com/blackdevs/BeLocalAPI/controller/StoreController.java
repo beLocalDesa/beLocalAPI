@@ -26,32 +26,32 @@ public class StoreController {
 	@Qualifier("storeService")
 	StoreService service;
 	@PutMapping("/store")
-	public boolean agregar(@RequestBody @Valid Store store)
+	public boolean insert(@RequestBody @Valid Store store)
 	{
-		return service.insertar(store);
+		return service.insert(store);
 	}
 	
 	@PostMapping("/store")
-	public boolean actualizar(@RequestBody @Valid Store store)
+	public boolean update(@RequestBody @Valid Store store)
 	{
-		return service.actualizar(store);
+		return service.update(store);
 	}
 	
 	@DeleteMapping("/store/{id}")
-	public boolean borrar(long id) 
+	public boolean deletebyId(long id) 
 	{
-		return service.borrar(id);
+		return service.deletebyId(id);
 	}
 	
-	@GetMapping("/store/{id}")
-	public MStore traerPorID(long id)
+	@GetMapping("/store/{name}")
+	public List<MStore>  getbyName(String name)
 	{
-		return service.traerPorID(id);
+		return service.getbyName(name);
 	}
 	
 	@GetMapping("/shop")
-	public List<MStore> traerTodos()
+	public List<MStore> getAll()
 	{
-		return service.traerTodos();
+		return service.getAll();
 	}
 }

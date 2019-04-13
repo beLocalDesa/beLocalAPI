@@ -13,11 +13,11 @@ import com.blackdevs.BeLocalAPI.repository.UrlfriendlyRepository;
 public class UrlfriendlyService {
 	@Autowired
 	@Qualifier("urlfriendlyRepository")
-	private UrlfriendlyRepository repositorio;
+	private UrlfriendlyRepository repoURL;
 	
-	public boolean insertar(Urlfriendly urlfriendly) {
+	public boolean insert(Urlfriendly urlfriendly) {
 		try {
-			repositorio.save(urlfriendly);
+			repoURL.save(urlfriendly);
 			
 			return true;
 		} catch(Exception e) {
@@ -26,9 +26,9 @@ public class UrlfriendlyService {
 		}
 	}
 	
-	public boolean actualizar(Urlfriendly urlfriendly) {
+	public boolean update(Urlfriendly urlfriendly) {
 		try {
-			repositorio.save(urlfriendly);
+			repoURL.save(urlfriendly);
 			return true;
 		} catch(Exception e) {
 			// va logger de error
@@ -36,12 +36,10 @@ public class UrlfriendlyService {
 		}
 	}
 	
-	public boolean borrar(long id) {
+	public boolean deletebyId(long id) {
 		try {
-			Urlfriendly urlfriendly = repositorio.findById(id);
-			
-			repositorio.delete(urlfriendly);
-			
+			Urlfriendly urlfriendly = repoURL.findById(id);	
+			repoURL.delete(urlfriendly);		
 			return true;			
 		} catch(Exception e) {
 			// va logger de error
@@ -49,10 +47,9 @@ public class UrlfriendlyService {
 		}
 	}
 	
-	public MUrlfriendly traerPorID(long id) {
+	public MUrlfriendly getbyId(long id) {
 		try {
-			Urlfriendly urlfriendly = repositorio.findById(id);
-			
+			Urlfriendly urlfriendly = repoURL.findById(id);			
 			return new MUrlfriendly(urlfriendly);			
 		} catch(Exception e) {
 			// va logger de error

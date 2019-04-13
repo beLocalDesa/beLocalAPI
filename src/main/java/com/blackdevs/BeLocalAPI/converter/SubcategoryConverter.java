@@ -10,7 +10,7 @@ import com.blackdevs.BeLocalAPI.model.MSubcategory;
 
 @Component("subcategoryConverter")
 public class SubcategoryConverter {
-	public List<MSubcategory> Lista(List<Subcategory> subcategories) {
+	public List<MSubcategory> ListSc(List<Subcategory> subcategories) {
 		List<MSubcategory> msubcategories = new ArrayList<>();
 		
 		for(Subcategory subcategory : subcategories) {

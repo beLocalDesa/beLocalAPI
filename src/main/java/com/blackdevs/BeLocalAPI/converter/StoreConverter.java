@@ -10,7 +10,7 @@ import com.blackdevs.BeLocalAPI.model.MStore;
 
 @Component("storeConverter")
 public class StoreConverter {
-	public List<MStore> Lista(List<Store> shops) {
+	public List<MStore> ListStore(List<Store> shops) {
 		List<MStore> mshops = new ArrayList<>();
 		
 		for(Store store : shops) {

@@ -26,32 +26,32 @@ public class DistrictController {
 	@Qualifier("districtService")
 	DistrictService service;
 	@PutMapping("/district")
-	public boolean agregar(@RequestBody @Valid District district)
+	public boolean insert(@RequestBody @Valid District district)
 	{
-		return service.insertar(district);
+		return service.insert(district);
 	}
 	
 	@PostMapping("/district")
-	public boolean actualizar(@RequestBody @Valid District district)
+	public boolean update(@RequestBody @Valid District district)
 	{
-		return service.actualizar(district);
+		return service.update(district);
 	}
 	
 	@DeleteMapping("/district/{id}")
-	public boolean borrar(long id) 
+	public boolean deletebyId(long id) 
 	{
-		return service.borrar(id);
+		return service.deletebyId(id);
 	}
 	
 	@GetMapping("/district/{id}")
-	public MDistrict traerPorID(long id)
+	public MDistrict getbyId(long id)
 	{
-		return service.traerPorID(id);
+		return service.getbyId(id);
 	}
 	
 	@GetMapping("/districts")
-	public List<MDistrict> traerTodos()
+	public List<MDistrict> getAll()
 	{
-		return service.traerTodos();
+		return service.getAll();
 	}
 }

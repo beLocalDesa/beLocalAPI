@@ -15,15 +15,15 @@ import com.blackdevs.BeLocalAPI.repository.CategoryRepository;
 public class CategoryService {
 	@Autowired
 	@Qualifier("categoryRepository")
-	private CategoryRepository repositorio;
+	private CategoryRepository repoCat;
 
 	@Autowired
 	@Qualifier("categoryConverter")
 	private CategoryConverter converter;
 	
-	public boolean insertar(Category category) {
+	public boolean insert(Category category) {
 		try {
-			repositorio.save(category);
+			repoCat.save(category);
 			
 			return true;
 		} catch(Exception e) {
@@ -32,9 +32,9 @@ public class CategoryService {
 		}
 	}
 	
-	public boolean actualizar(Category category) {
+	public boolean update(Category category) {
 		try {
-			repositorio.save(category);
+			repoCat.save(category);
 			return true;
 		} catch(Exception e) {
 			// va logger de error
@@ -42,12 +42,10 @@ public class CategoryService {
 		}
 	}
 	
-	public boolean borrar(long id) {
+	public boolean deletebyId(long id) {
 		try {
-			Category category = repositorio.findById(id);
-			
-			repositorio.delete(category);
-			
+			Category category = repoCat.findById(id);			
+			repoCat.delete(category);			
 			return true;			
 		} catch(Exception e) {
 			// va logger de error
@@ -55,10 +53,9 @@ public class CategoryService {
 		}
 	}
 	
-	public MCategory traerPorID(long id) {
+	public MCategory getbyId(long id) {
 		try {
-			Category category = repositorio.findById(id);
-			
+			Category category = repoCat.findById(id);			
 			return new MCategory(category);			
 		} catch(Exception e) {
 			// va logger de error
@@ -66,7 +63,7 @@ public class CategoryService {
 		}
 	}
 	
-	public List<MCategory> traerTodos() {
-		return converter.Lista(repositorio.findAll());
+	public List<MCategory> getAll() {
+		return converter.ListCat(repoCat.findAll());
 	}
 }

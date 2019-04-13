@@ -10,13 +10,11 @@ import com.blackdevs.BeLocalAPI.model.MProduct;
 
 @Component("productConverter")
 public class ProductConverter {
-	public List<MProduct> Lista(List<Product> products) {
-		List<MProduct> mproducts = new ArrayList<>();
-		
+	public List<MProduct> ListProd(List<Product> products) {
+		List<MProduct> mproducts = new ArrayList<>();		
 		for(Product product : products) {
 			mproducts.add(new MProduct(product));
-		}
-		
+		}		
 		return mproducts;
 	}
 }

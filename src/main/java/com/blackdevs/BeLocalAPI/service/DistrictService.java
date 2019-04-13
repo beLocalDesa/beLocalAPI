@@ -15,16 +15,15 @@ import com.blackdevs.BeLocalAPI.repository.DistrictRepository;
 public class DistrictService {
 	@Autowired
 	@Qualifier("districtRepository")
-	private DistrictRepository repositorio;
+	private DistrictRepository repoDist;
 
 	@Autowired
 	@Qualifier("districtConverter")
 	private DistrictConverter converter;
 	
-	public boolean insertar(District district) {
+	public boolean insert(District district) {
 		try {
-			repositorio.save(district);
-			
+			repoDist.save(district);			
 			return true;
 		} catch(Exception e) {
 			// va logger de error
@@ -32,9 +31,9 @@ public class DistrictService {
 		}
 	}
 	
-	public boolean actualizar(District district) {
+	public boolean update(District district) {
 		try {
-			repositorio.save(district);
+			repoDist.save(district);
 			return true;
 		} catch(Exception e) {
 			// va logger de error
@@ -42,12 +41,10 @@ public class DistrictService {
 		}
 	}
 	
-	public boolean borrar(long id) {
+	public boolean deletebyId(long id) {
 		try {
-			District district= repositorio.findById(id);
-			
-			repositorio.delete(district);
-			
+			District district= repoDist.findById(id);			
+			repoDist.delete(district);			
 			return true;			
 		} catch(Exception e) {
 			// va logger de error
@@ -55,10 +52,9 @@ public class DistrictService {
 		}
 	}
 	
-	public MDistrict traerPorID(long id) {
+	public MDistrict getbyId(long id) {
 		try {
-			District district = repositorio.findById(id);
-			
+			District district = repoDist.findById(id);			
 			return new MDistrict(district);			
 		} catch(Exception e) {
 			// va logger de error
@@ -66,8 +62,8 @@ public class DistrictService {
 		}
 	}
 	
-	public List<MDistrict> traerTodos() {
-		return converter.Lista(repositorio.findAll());
+	public List<MDistrict> getAll() {
+		return converter.ListDist(repoDist.findAll());
 	}
 
 }

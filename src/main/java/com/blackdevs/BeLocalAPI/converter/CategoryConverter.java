@@ -10,7 +10,7 @@ import com.blackdevs.BeLocalAPI.model.MCategory;
 
 @Component("categoryConverter")
 public class CategoryConverter {
-	public List<MCategory> Lista(List<Category> categories) {
+	public List<MCategory> ListCat(List<Category> categories) {
 		List<MCategory> mcategories = new ArrayList<>();
 		
 		for(Category category : categories) {
